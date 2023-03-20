@@ -507,3 +507,10 @@ Page Styles
     font-weight: 500;
     letter-spacing: 5px;
 }
+blink {
+   -webkit-animation-name: blink; 
+   -webkit-animation-iteration-count: infinite; 
+   -webkit-animation-timing-function: cubic- 
+    bezierr(1.0,0,0,1.0);
+    -webkit-animation-duration: 1s;
+  }
