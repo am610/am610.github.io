@@ -514,3 +514,27 @@ blink {
     bezierr(1.0,0,0,1.0);
     -webkit-animation-duration: 1s;
   }
+
+# Add a CSS class to the line that should blink
+update_line = soup.find(string="Update : Won CAPS Fellowship, UIUC, USA")
+update_line.parent['class'] = 'blink'
+
+# Add a style tag with a CSS rule for blinking text
+style_tag = soup.new_tag("style")
+style_tag.string = """
+@keyframes blink {
+    0% {opacity: 1;}
+    50% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.blink {
+    animation: blink 1s linear infinite;
+}
+"""
+soup.head.append(style_tag)
+
+# Convert the modified soup object back to a string
+corrected_html_blink = str(soup)
+
+corrected_html_blink
+
