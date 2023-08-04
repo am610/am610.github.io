@@ -1,88 +1,145 @@
+
+
 <!DOCTYPE html>
+
 <html>
 <head>
-	<title>href-"https://drive.google.com/file/d/1QHglv8DY7GXuNopkWDpDKm_pzQdB1RWz/view?usp=sharing" My Resume</title>
-	<link rel="stylesheet" type="text/css" href="css/styles.css">
-	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-</head>
+<title>My Resume</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css"/>
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+<style>
+@keyframes blink {
+    0% {opacity: 1;}
+    50% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.blink {
+    animation: blink 1s linear infinite;
+}
+</style><style>
+@keyframes blink {
+    0% {opacity: 1;}
+    50% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.blink {
+    animation: blink 1s linear infinite;
+    color: red;  /* Make the text red */
+}
+.news-slider {
+    width: 100%;
+    height: 300px;  /* Increased height to accommodate larger text */
+    position: relative;
+    overflow: hidden;
+}
+.news-item {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    transition: opacity 1s;
+    display: flex;
+    flex-direction: column-reverse;  /* Switch text and image */
+    justify-content: center;  /* Align text to the center */
+    align-items: center;  /* Center the text horizontally */
+}
+.news-item div {
+    position: relative;
+    z-index: 1;  /* Make the text appear above the image */
+    font-size: 24px;  /* Increase font size */
+    font-family: 'Arial Black', sans-serif;  /* Use a better-looking font */
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.7);  /* Semi-transparent white background */
+    text-align: center;  /* Center-align the text */
+    margin-bottom: 20px;  /* Raise the text slightly */
+}
+</style></head>
 <body>
-	<div class="wraper">
-		<div class="container">
-		<div class="left-content p-30">
-			<div class="logo">
-				<a href="index.html">
-					<span>My</span>
-					<span>Resume</span>
-				</a>
-			</div>
-			<div class="nav">
-				<ul>
-					<li><a href="#Home">Home</a></li>
-					<li><a href="about.html">About</a></li>
-				</ul>
-			</div>
-			<div class="left-footer">
-				<div class="social-icons">
-					<ul>
-						<li><a href="https://orcid.org/0000-0002-9436-8871"><i class="fa fa-graduation-cap" aria-hidden="true"></i></i></a></li>
-						<li><a href="https://www.facebook.com/sirayanmitra/"><i class="fa fa-facebook" style="color:blue" aria-hidden="true"></i></a></li>
-						<li><a href="https://github.com/am610"><i class="fa fa-github" style="color:black" aria-hidden="true"  target="_blank"></i></a></li>
-						<li><a href="https://www.instagram.com/mitra_a/"><i class="fa fa-instagram" style="color:magenta" aria-hidden="true"  target="_blank"></i></a></li>
-					</ul>
-				</div>
-				<div class="foot-contact">
-					<ul>
-						<li>ayanmitra375@gmail.com</li>
-						<li>+91 8335089668</li>
-					</ul>
-				</div>
-				
-<div class="copy-rights">Copyright &copy;2023 All rights reserved</div>
-			</div>
-
-		</div>
-		<div class="main-content">
-			<div class="section1 p-30" id="Home">
-			<div class="sec-title">
-	<div class="pg-sub-title">Home</div>
-	<div class="pg-title">My Profile [Under Construction]</div>
-			</div>
-				<div class="d-flex-align-center">
-				<div class="user-img flex-1"><img src="https://lh3.googleusercontent.com/aBwOdGw6w44462p4X5nKxHrpdXdI74mAXuUofFBKaXNYftNHDZf4qqQgM-Tj-nBCmjKCeqP0NinIOi-usOkbeyabb-ZdZWjN9etsIrPisXJMHKLRu4gyDi9e9PiDkRP6BRTeJ_o8PeI=w2400" alt="me-1" border="0"></div>
-				<div class="user-profile flex-1">
-					<div class="pro-details">
-						<div class="sm-text">Welcome Добро пожаловать Bienvenue সাদর অভ্যর্থনা</div>
-						<div class="name">Ayan Mitra</div>
-						<div class="role">LSST Postdoc Fellow</div>
-						<div class="role"><blink>Update : Won CAPS Fellowship, UIUC, USA</blink></div>
-
-					</div>
-					<div class="text"><br>Curiouser and curiouser!</br> I am Ayan Mitra. I come from the beautiful city of Calcutta (now called as  <a href="https://en.wikipedia.org/wiki/Kolkata">Kolkata</a>), India. Growing up I studied in St. Stephen's School, Dum Dum and the completed my B.Sc. (Hons) from the St. Xaviers College (now University) under the University of Calcutta, in physics. Since then I have been mostly a vagabond travelling across many countries and continents, all while trying to do some science or rather learn more of it. Currently I am an <a href="https://www.lsst.org/">LSST</a> postdoctoral fellow at the <a href="https://www.iucaa.in/en/">IUCAA</a>, India. 
-					I work with Professor Surhud More. My research interests include Supernova Ia, dark energy and cosmology and Machine Learning (ML). </div>
-					<div class="pr-list">
-						<ul>
-							<li><i class="fa fa-calendar" aria-hidden="true"></i> 28th Nov, 1990</li>
-							<li><i class="fa fa-phone" aria-hidden="true"></i> +91 8335089668</li>
-							<li><i class="fa fa-envelope" aria-hidden="true"></i> ayanmitra375@gmail.com</li>
-							<li><i class="fa fa-map-marker" aria-hidden="true"></i> Pune, India</li>
-						</ul>
-					</div>
-			<div class="social-icons-head">
-					<ul>
-						<li><a href="https://orcid.org/0000-0002-9436-8871"><i class="fa fa-graduation-cap" aria-hidden="true"></i></a></li>
-						<li><a href="https://www.facebook.com/sirayanmitra/"><i class="fa fa-facebook" style="color:blue" aria-hidden="true"></i></a></li>
-						<li><a href="https://github.com/am610"><i class="fa fa-github" style="color:black" aria-hidden="true"></i></a></li>
-						<li><a href="https://youtube.com/playlist?list=PLudTdSjkh1BCCDRVXt5bpxB9745B-O0O4"><i class="fa fa-youtube" style="color:red" aria-hidden="true"  target="_blank"></i></a></li>
-						<li><a href="https://www.instagram.com/mitra_a/"><i class="fa fa-instagram" style="color:magenta" aria-hidden="true"></i></a></li>
-					</ul>
-				</div>
-
-				</div>
-			</div>
-			</div>
-
-		</div>
-	</div>
+<div class="wraper">
+<div class="container">
+<nav class="left-content p-30">
+<div class="logo">
+<a href="index.html">
+<span>My</span>
+<span>Resume</span>
+</a>
 </div>
-</body>
+<div class="nav">
+<ul>
+<li><a href="#Home">Home</a></li>
+<li><a href="about.html">About</a></li>
+</ul>
+</div>
+<div class="left-footer">
+<div class="social-icons">
+<ul>
+<li><a href="https://orcid.org/0000-0002-9436-8871" target="_blank"><i aria-hidden="true" class="fa fa-graduation-cap"></i></a></li>
+<li><a href="https://www.facebook.com/sirayanmitra/" target="_blank"><i aria-hidden="true" class="fa fa-facebook" style="color:blue"></i></a></li>
+<li><a href="https://github.com/am610" target="_blank"><i aria-hidden="true" class="fa fa-github" style="color:black" target="_blank"></i></a></li>
+<li><a href="https://www.instagram.com/mitra_a/" target="_blank"><i aria-hidden="true" class="fa fa-instagram" style="color:magenta" target="_blank"></i></a></li>
+</ul>
+</div>
+<div class="foot-contact">
+<ul>
+<li>ayanmitra375@gmail.com</li>
+<li>+91 8335089668</li>
+</ul>
+</div>
+<footer class="copy-rights">Copyright ©2023 All rights reserved</footer>
+</div>
+</nav>
+<div class="main-content">
+<div class="section1 p-30" id="Home">
+<div class="sec-title">
+<div class="pg-sub-title">Home</div>
+<div class="pg-title">My Profile</div>
+</div>
+<div class="d-flex-align-center">
+<div class="user-img flex-1"><img alt="Ayan Mitra's Picture" border="0" src="https://lh3.googleusercontent.com/aBwOdGw6w44462p4X5nKxHrpdXdI74mAXuUofFBKaXNYftNHDZf4qqQgM-Tj-nBCmjKCeqP0NinIOi-usOkbeyabb-ZdZWjN9etsIrPisXJMHKLRu4gyDi9e9PiDkRP6BRTeJ_o8PeI=w2400"/></div>
+<div class="user-profile flex-1">
+<div class="pro-details">
+<div class="sm-text">Welcome Добро пожаловать Bienvenue সাদর অভ্যর্থনা</div>
+<div class="name">Ayan Mitra</div>
+<div class="role">LSST DESC Pipeline Scientist, Rubin Postdoc Fellow</div>
+<div class="blink">Update : Won CAPS Fellowship, UIUC, USA</div>
+</div>
+<div class="text"><br/>Curiouser and curiouser! I am Ayan Mitra. I come from the beautiful city of Calcutta (now called as  <a href="https://en.wikipedia.org/wiki/Kolkata" target="_blank">Kolkata</a>), India. Growing up I studied in St. Stephen's School, Dum Dum and the completed my B.Sc. (Hons) from the St. Xaviers College (now University) under the University of Calcutta, in physics. Since then I have been mostly a vagabond travelling across many countries and continents, all while trying to do some sc...
+                    I work with Professor Surhud More. My research interests include Supernova Ia, dark energy and cosmology and Machine Learning (ML). </div>
+<div class="pr-list">
+<ul>
+<li><i aria-hidden="true" class="fa fa-calendar"></i> 28th Nov, 1990</li>
+<li><i aria-hidden="true" class="fa fa-phone"></i> +91 8335089668</li>
+<li><i aria-hidden="true" class="fa fa-envelope"></i> ayanmitra375@gmail.com</li>
+<li><i aria-hidden="true" class="fa fa-map-marker"></i> Pune, India</li>
+</ul>
+</div>
+<div class="social-icons-head">
+<ul>
+<li><a href="https://orcid.org/0000-0002-9436-8871" target="_blank"><i aria-hidden="true" class="fa fa-graduation-cap"></i></a></li>
+<li><a href="https://www.facebook.com/sirayanmitra/" target="_blank"><i aria-hidden="true" class="fa fa-facebook" style="color:blue"></i></a></li>
+<li><a href="https://github.com/am610" target="_blank"><i aria-hidden="true" class="fa fa-github" style="color:black"></i></a></li>
+<li><a href="https://youtube.com/playlist?list=PLudTdSjkh1BCCDRVXt5bpxB9745B-O0O4" target="_blank"><i aria-hidden="true" class="fa fa-youtube" style="color:red" target="_blank"></i></a></li>
+<li><a href="https://www.instagram.com/mitra_a/" target="_blank"><i aria-hidden="true" class="fa fa-instagram" style="color:magenta"></i></a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="news-slider"><div class="news-item" style="background-image: url('https://i.imgur.com/tZ3KH4c.jpg')"><div>Recent visit from LSST DESC Collaboration Meeting at SLACK, California</div></div><div class="news-item" style="background-image: url('https://i.imgur.com/YunGqbY.jpg')"><div>Began working as Pipeline Scientist in DESC</div></div></div><script>
+let currentNewsIndex = 0;
+const newsItems = document.querySelectorAll('.news-item');
+
+function changeNews() {
+    newsItems.forEach((item, index) => {
+        item.style.opacity = index === currentNewsIndex ? 1 : 0;
+    });
+    currentNewsIndex = (currentNewsIndex + 1) % newsItems.length;
+}
+
+setInterval(changeNews, 3000);  // Change news every 3 seconds
+</script></body>
 </html>
