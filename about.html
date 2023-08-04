@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 
 <html>
@@ -14,6 +15,44 @@
 }
 .blink {
     animation: blink 1s linear infinite;
+}
+</style><style>
+@keyframes blink {
+    0% {opacity: 1;}
+    50% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.blink {
+    animation: blink 1s linear infinite;
+    color: red;  /* Make the text red */
+}
+.news-slider {
+    width: 100%;
+    height: 300px;  /* Increased height to accommodate larger text */
+    position: relative;
+    overflow: hidden;
+}
+.news-item {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    transition: opacity 1s;
+    display: flex;
+    flex-direction: column-reverse;  /* Switch text and image */
+    justify-content: center;  /* Align text to the center */
+    align-items: center;  /* Center the text horizontally */
+}
+.news-item div {
+    position: relative;
+    z-index: 1;  /* Make the text appear above the image */
+    font-size: 24px;  /* Increase font size */
+    font-family: 'Arial Black', sans-serif;  /* Use a better-looking font */
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.7);  /* Semi-transparent white background */
+    text-align: center;  /* Center-align the text */
+    margin-bottom: 20px;  /* Raise the text slightly */
 }
 </style></head>
 <body>
@@ -62,11 +101,11 @@
 <div class="pro-details">
 <div class="sm-text">Welcome Добро пожаловать Bienvenue সাদর অভ্যর্থনা</div>
 <div class="name">Ayan Mitra</div>
-<div class="role">LSST Postdoc Fellow</div>
+<div class="role">LSST DESC Pipeline Scientist, Rubin Postdoc Fellow</div>
 <div class="blink">Update : Won CAPS Fellowship, UIUC, USA</div>
 </div>
-<div class="text"><br/>Curiouser and curiouser! I am Ayan Mitra. I come from the beautiful city of Calcutta (now called as  <a href="https://en.wikipedia.org/wiki/Kolkata" target="_blank">Kolkata</a>), India. Growing up I studied in St. Stephen's School, Dum Dum and the completed my B.Sc. (Hons) from the St. Xaviers College (now University) under the University of Calcutta, in physics. Since then I have been mostly a vagabond travelling across many countries and continents, all while trying to do some science or rather learn more of it. Currently I am an <a href="https://www.lsst.org/" target="_blank">LSST</a> postdoctoral fellow at the <a href="https://www.iucaa.in/en/" target="_blank">IUCAA</a>, India. 
-					I work with Professor Surhud More. My research interests include Supernova Ia, dark energy and cosmology and Machine Learning (ML). </div>
+<div class="text"><br/>Curiouser and curiouser! I am Ayan Mitra. I come from the beautiful city of Calcutta (now called as  <a href="https://en.wikipedia.org/wiki/Kolkata" target="_blank">Kolkata</a>), India. Growing up I studied in St. Stephen's School, Dum Dum and the completed my B.Sc. (Hons) from the St. Xaviers College (now University) under the University of Calcutta, in physics. Since then I have been mostly a vagabond travelling across many countries and continents, all while trying to do some sc...
+                    I work with Professor Surhud More. My research interests include Supernova Ia, dark energy and cosmology and Machine Learning (ML). </div>
 <div class="pr-list">
 <ul>
 <li><i aria-hidden="true" class="fa fa-calendar"></i> 28th Nov, 1990</li>
@@ -90,5 +129,17 @@
 </div>
 </div>
 </div>
-</body>
+<div class="news-slider"><div class="news-item" style="background-image: url('https://i.imgur.com/tZ3KH4c.jpg')"><div>Recent visit from LSST DESC Collaboration Meeting at SLACK, California</div></div><div class="news-item" style="background-image: url('https://i.imgur.com/YunGqbY.jpg')"><div>Began working as Pipeline Scientist in DESC</div></div></div><script>
+let currentNewsIndex = 0;
+const newsItems = document.querySelectorAll('.news-item');
+
+function changeNews() {
+    newsItems.forEach((item, index) => {
+        item.style.opacity = index === currentNewsIndex ? 1 : 0;
+    });
+    currentNewsIndex = (currentNewsIndex + 1) % newsItems.length;
+}
+
+setInterval(changeNews, 3000);  // Change news every 3 seconds
+</script></body>
 </html>
