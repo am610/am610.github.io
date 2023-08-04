@@ -1,269 +1,94 @@
+
 <!DOCTYPE html>
-<html lang="en">
+
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Techro is a modern and fully responsive Template by WebThemez.">
-    <meta name="author" content="webThemez.com">
-    <title>Techro - Flat Free Responsive bootstrap template</title>
-    <link rel="favicon" href="assets/images/favicon.png">
-    <link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
-    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    <!-- Custom styles for our template -->
-    <link rel="stylesheet" href="assets/css/bootstrap-theme.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="assets/css/da-slider.css" />
-    <link rel="stylesheet" href="assets/css/style.css">
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-	<script src="assets/js/html5shiv.js"></script>
-	<script src="assets/js/respond.min.js"></script>
-	<![endif]-->
-</head>
+<title>My Resume</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css"/>
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+<style>
+@keyframes blink {
+    0% {opacity: 1;}
+    50% {opacity: 0;}
+    100% {opacity: 1;}
+}
+.blink {
+    animation: blink 1s linear infinite;
+}
+</style></head>
 <body>
-    <!-- Fixed navbar -->
-    <div class="navbar navbar-inverse">
-        <div class="container">
-            <div class="navbar-header">
-                <!-- Button for smallest screens -->
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav pull-right">
-                    <li class="active"><a href="index.html">Home</a></li> 
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">. <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="sidebar-right.html">Right Sidebar</a></li>
-                            <li><a href="#">Dummy Link1</a></li>
-                            <li><a href="#">Dummy Link2</a></li>
-                            <li><a href="#">Dummy Link3</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <!--/.nav-collapse -->
-        </div>
-    </div>
-    <!-- /.navbar -->
-
-    <!-- Header -->
-    <header id="head">
-        <div class="container">
-            <div class="banner-content">
-                <div id="da-slider" class="da-slider">
-                    <div class="da-slide">
-                        <h2>Responsive Website</h2>
-                        <p>Amazing free responsive website for free, enjoy!!!</p>
-                        <div class="da-img"></div>
-                    </div>
-                    <div class="da-slide">
-                        <h2>Bootstrap</h2>
-                        <p>Bootstrap is a powerful mobile first front-end framework..</p>
-                        <div class="da-img"></div>
-                    </div>
-                    <div class="da-slide">
-                        <h2>HTML5/CSS3</h2>
-                        <p>HTML5 is a markup language used for structuring and presenting Web.</p>
-                        <div class="da-img"></div>
-                    </div>
-                    <div class="da-slide">
-                        <h2>JavaScript/jQuery</h2>
-                        <p>jQuery: Write Less, Do More...</p>
-                        <div class="da-img"></div>
-                    </div>
-                    <nav class="da-arrows">
-                        <span class="da-arrows-prev"></span>
-                        <span class="da-arrows-next"></span>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
-    <!-- /Header -->
-
-    <!-- container -->
-    <div class="container">
-        <div class="heading">
-            <!-- Heading -->
-            <h2>About me</h2>
-            <br />
-        </div>
-        <div class="row">
-            <div class="col-md-4">
-                <img src="assets/images/1.jpg" alt="" class="img-responsive img-thumbnail">
-            </div>
-            <div class="col-md-8">
-                <p> XYZ </p>
-                <blockquote class="blockquote-1">
-                    <p> ABC</p>
-                    <small>++ <cite title="Source Title">XX</cite></small>
-                </blockquote>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class='col-md-12 text-center'>
-                <h3>Updates</h3>
-            </div>
-        </div>
-        <div class='row'>
-            <div class='col-md-12'>
-                <div class="carousel slide" data-ride="carousel" id="quote-carousel">
-                    <!-- Bottom Carousel Indicators -->
-                    <ol class="carousel-indicators">
-                        <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#quote-carousel" data-slide-to="1"></li>
-                        <li data-target="#quote-carousel" data-slide-to="2"></li>
-                    </ol>
-
-                    <!-- Carousel Slides / Quotes -->
-                    <div class="carousel-inner">
-                        <!-- Quote 1 -->
-                        <div class="item active">
-                            <blockquote>
-                                <div class="row">
-                                    <div class="col-sm-3 text-center">
-                                        <img class="img-circle" src="assets/images/person_1.jpg" style="width: 100px; height: 100px;">
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <p>Won CAPS Fellowship, UIUC, USA</p>
-                                        <small></small>
-                                    </div>
-                                </div>
-                            </blockquote>
-                        </div>
-                        <!-- Quote 2 -->
-                        <div class="item">
-                            <blockquote>
-                                <div class="row">
-                                    <div class="col-sm-3 text-center">
-                                        <img class="img-circle" src="assets/images/person_2.png" style="width: 100px; height: 100px;">
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <p>XXX.</p>
-                                        <small>..</small>
-                                    </div>
-                                </div>
-                            </blockquote>
-                        </div>
-                        <!-- Quote 3 -->
-                        <div class="item">
-                            <blockquote>
-                                <div class="row">
-                                    <div class="col-sm-3 text-center">
-                                        <img class="img-circle" src="assets/images/person_3.png" style="width: 100px; height: 100px;">
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <p>XYZ</p>
-                                        <small>...</small>
-                                    </div>
-                                </div>
-                            </blockquote>
-                        </div>
-                    </div>
-
-                    <!-- Carousel Buttons Next/Prev -->
-                    <a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-chevron-left"></i></a>
-                    <a data-slide="next" href="#quote-carousel" class="right carousel-control"><i class="fa fa-chevron-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Highlights - jumbotron -->
-    <div class="jumbotron">
-        <div class="container">
-
-            <h3 class="text-center"></h3>
-
-            <div class="row">
-            </div>
-            <!-- /row  -->
-
-        </div>
-    </div>
-    <!-- /Highlights -->
-
-
-    <footer id="footer">
-
-        <div class="footer1">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-5 panel">
-                        <h3 class="panel-title">About Techro</h3>
-                        <div class="panel-body">
-                            <p>ZYX</p>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 panel contact">
-                        <h3 class="panel-title">Contact Info</h4>
-						<div class="panel-body">
-                            <p>AAA</p>
-                            <ul>
-                                <li><i class="fa fa-phone"></i>1-123-345-6789</li>
-                                <li><a href="#"><i class="fa fa-envelope-o"></i>ayanmitra375@gmail.com</a></li>
-                                <li><i class="fa fa-flag"></i>Ayan Mitra</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 panel">
-                        <h3 class="panel-title">Follow me</h3>
-                        <div class="panel-body">
-                            <p class="follow-me-icons">
-                                <a href=""><i class="fa fa-twitter fa-2"></i></a>
-                                <a href=""><i class="fa fa-dribbble fa-2"></i></a>
-                                <a href=""><i class="fa fa-github fa-2"></i></a>
-                                <a href=""><i class="fa fa-facebook fa-2"></i></a>
-                                <a href=""><i class="fa fa-youtube fa-2"></i></a>
-                                <a href=""><i class="fa fa-pinterest fa-2"></i></a>
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- /row of panels -->
-            </div>
-        </div>
-
-        <div class="footer2">
-            <div class="container">
-                <div class="row">
-
-                    <div class="col-md-6 panel">
-                        <div class="panel-body">
-                            <p class="simplenav">
-                                <a href="index.html">Home</a> 
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 panel">
-                        <div class="panel-body">
-                            <p class="text-right">
-                                Copyright &copy; 2014. Template by <a href="http://webthemez.com/" rel="develop">WebThemez.com</a>
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-                <!-- /row of panels -->
-            </div>
-        </div>
-
-    </footer>
-
-
-
-
-
-    <!-- JavaScript libs are placed at the end of the document so the pages load faster -->
-    <script src="assets/js/modernizr-latest.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    <script src="assets/js/jquery.cslider.js"></script>
-    <script src="assets/js/custom.js"></script>
+<div class="wraper">
+<div class="container">
+<nav class="left-content p-30">
+<div class="logo">
+<a href="index.html">
+<span>My</span>
+<span>Resume</span>
+</a>
+</div>
+<div class="nav">
+<ul>
+<li><a href="#Home">Home</a></li>
+<li><a href="about.html">About</a></li>
+</ul>
+</div>
+<div class="left-footer">
+<div class="social-icons">
+<ul>
+<li><a href="https://orcid.org/0000-0002-9436-8871" target="_blank"><i aria-hidden="true" class="fa fa-graduation-cap"></i></a></li>
+<li><a href="https://www.facebook.com/sirayanmitra/" target="_blank"><i aria-hidden="true" class="fa fa-facebook" style="color:blue"></i></a></li>
+<li><a href="https://github.com/am610" target="_blank"><i aria-hidden="true" class="fa fa-github" style="color:black" target="_blank"></i></a></li>
+<li><a href="https://www.instagram.com/mitra_a/" target="_blank"><i aria-hidden="true" class="fa fa-instagram" style="color:magenta" target="_blank"></i></a></li>
+</ul>
+</div>
+<div class="foot-contact">
+<ul>
+<li>ayanmitra375@gmail.com</li>
+<li>+91 8335089668</li>
+</ul>
+</div>
+<footer class="copy-rights">Copyright ©2023 All rights reserved</footer>
+</div>
+</nav>
+<div class="main-content">
+<div class="section1 p-30" id="Home">
+<div class="sec-title">
+<div class="pg-sub-title">Home</div>
+<div class="pg-title">My Profile [Under Construction]</div>
+</div>
+<div class="d-flex-align-center">
+<div class="user-img flex-1"><img alt="Ayan Mitra's Picture" border="0" src="https://lh3.googleusercontent.com/aBwOdGw6w44462p4X5nKxHrpdXdI74mAXuUofFBKaXNYftNHDZf4qqQgM-Tj-nBCmjKCeqP0NinIOi-usOkbeyabb-ZdZWjN9etsIrPisXJMHKLRu4gyDi9e9PiDkRP6BRTeJ_o8PeI=w2400"/></div>
+<div class="user-profile flex-1">
+<div class="pro-details">
+<div class="sm-text">Welcome Добро пожаловать Bienvenue সাদর অভ্যর্থনা</div>
+<div class="name">Ayan Mitra</div>
+<div class="role">LSST Postdoc Fellow</div>
+<div class="blink">Update : Won CAPS Fellowship, UIUC, USA</div>
+</div>
+<div class="text"><br/>Curiouser and curiouser! I am Ayan Mitra. I come from the beautiful city of Calcutta (now called as  <a href="https://en.wikipedia.org/wiki/Kolkata" target="_blank">Kolkata</a>), India. Growing up I studied in St. Stephen's School, Dum Dum and the completed my B.Sc. (Hons) from the St. Xaviers College (now University) under the University of Calcutta, in physics. Since then I have been mostly a vagabond travelling across many countries and continents, all while trying to do some science or rather learn more of it. Currently I am an <a href="https://www.lsst.org/" target="_blank">LSST</a> postdoctoral fellow at the <a href="https://www.iucaa.in/en/" target="_blank">IUCAA</a>, India. 
+					I work with Professor Surhud More. My research interests include Supernova Ia, dark energy and cosmology and Machine Learning (ML). </div>
+<div class="pr-list">
+<ul>
+<li><i aria-hidden="true" class="fa fa-calendar"></i> 28th Nov, 1990</li>
+<li><i aria-hidden="true" class="fa fa-phone"></i> +91 8335089668</li>
+<li><i aria-hidden="true" class="fa fa-envelope"></i> ayanmitra375@gmail.com</li>
+<li><i aria-hidden="true" class="fa fa-map-marker"></i> Pune, India</li>
+</ul>
+</div>
+<div class="social-icons-head">
+<ul>
+<li><a href="https://orcid.org/0000-0002-9436-8871" target="_blank"><i aria-hidden="true" class="fa fa-graduation-cap"></i></a></li>
+<li><a href="https://www.facebook.com/sirayanmitra/" target="_blank"><i aria-hidden="true" class="fa fa-facebook" style="color:blue"></i></a></li>
+<li><a href="https://github.com/am610" target="_blank"><i aria-hidden="true" class="fa fa-github" style="color:black"></i></a></li>
+<li><a href="https://youtube.com/playlist?list=PLudTdSjkh1BCCDRVXt5bpxB9745B-O0O4" target="_blank"><i aria-hidden="true" class="fa fa-youtube" style="color:red" target="_blank"></i></a></li>
+<li><a href="https://www.instagram.com/mitra_a/" target="_blank"><i aria-hidden="true" class="fa fa-instagram" style="color:magenta"></i></a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </body>
 </html>
