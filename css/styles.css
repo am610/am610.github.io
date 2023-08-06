@@ -1,20 +1,7 @@
 @charset "utf-8";
 @import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700');
 @import url('https://fonts.googleapis.com/css?family=Roboto');
-/*=============================================
-Css Indexing
-===============================================
-1 Base CSS
 
-===============================================*/
-
-
-
-
-
-/*===========================================
-Base CSS
-============================================*/
 *{
   margin: 0;
   padding: 0;
@@ -116,9 +103,7 @@ i.material-icons {
   background-color: #777;
 }
 
-/*===========================================
-Text Styles CSS
-============================================*/
+
 .t-title-size{
   font-size: 18px;
 }
@@ -137,9 +122,7 @@ Text Styles CSS
 
 
 
-/*===========================================
-Padding & Margins CSS
-============================================*/
+
 .p-5{
   padding: 5px;
 }
@@ -152,6 +135,7 @@ Padding & Margins CSS
 .p-20{
   padding: 20px;
 }
+/*
 .p-25{
   padding: 25px;
 }
@@ -240,9 +224,7 @@ Padding & Margins CSS
   margin: 50px;
 }
 
-/*===========================================
-Display Styles
-============================================*/
+
 .d-flex{
   display: flex;
 }
@@ -265,9 +247,7 @@ Display Styles
 
 
 
-/*===========================================
-Page Styles
-============================================*/
+
 
 .wraper {
     width: 100%;
@@ -315,11 +295,10 @@ Page Styles
     letter-spacing: 5px;
     line-height: 30px;
     font-weight: 500;
-}
+} 
 
 .nav {
     flex: 1;
-    /* display: flex; */
     justify-content: flex-end;
     margin: 50px 0px;
 }
@@ -536,5 +515,5 @@ soup.head.append(style_tag)
 # Convert the modified soup object back to a string
 corrected_html_blink = str(soup)
 
-corrected_html_blink
+corrected_html_blink */
 
