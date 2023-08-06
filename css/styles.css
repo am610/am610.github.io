@@ -243,7 +243,7 @@ Padding & Margins CSS
 /*===========================================
 Display Styles
 ============================================*/
-/*.d-flex{
+.d-flex{
   display: flex;
 }
 .d-flex-align-center{
@@ -261,7 +261,7 @@ Display Styles
 }
 .flex-2{
   flex: 2;
-}*/
+}
 
 
 
