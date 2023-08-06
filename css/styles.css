@@ -140,7 +140,7 @@ Text Styles CSS
 /*===========================================
 Padding & Margins CSS
 ============================================*/
-.p-5{
+/*.p-5{
   padding: 5px;
 }
 .p-10{
@@ -238,12 +238,12 @@ Padding & Margins CSS
 }
 .m-50{
   margin: 50px;
-}
+}*/
 
 /*===========================================
 Display Styles
 ============================================*/
-.d-flex{
+/*.d-flex{
   display: flex;
 }
 .d-flex-align-center{
@@ -261,14 +261,14 @@ Display Styles
 }
 .flex-2{
   flex: 2;
-}
+}*/
 
 
 
 /*===========================================
 Page Styles
 ============================================*/
-/*
+
 .wraper {
     width: 100%;
     height: 100%;
@@ -506,7 +506,7 @@ Page Styles
     color: #999999;
     font-weight: 500;
     letter-spacing: 5px;
-} */
+} 
 blink {
    -webkit-animation-name: blink; 
    -webkit-animation-iteration-count: infinite; 
