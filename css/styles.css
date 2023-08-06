@@ -40,7 +40,7 @@ a, img {
   border: 0;
   outline: none;
   text-decoration: none;
-}
+}*/
 input::-moz-focus-inner {
   border: 0;
 }
@@ -64,7 +64,6 @@ a {
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s; }
-*/
 
 p {
   margin-bottom: 1.5em; }
