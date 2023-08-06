@@ -291,7 +291,7 @@ Page Styles
     flex-direction: column;
 }
 
-.main-content {
+/*.main-content {
     flex: 1;
     overflow-y: auto;
     margin-left: 10px;
@@ -301,7 +301,7 @@ Page Styles
 .logo {
     display: flex;
     justify-content: flex-end;
-}
+}*/
 
 .logo a {
     color: #fff;
