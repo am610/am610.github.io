@@ -1,6 +1,20 @@
 @charset "utf-8";
 @import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700');
 @import url('https://fonts.googleapis.com/css?family=Roboto');
+/*=============================================
+Css Indexing
+===============================================
+1 Base CSS
+
+===============================================*/
+
+
+
+
+
+/*===========================================
+Base CSS
+============================================*/
 *{
   margin: 0;
   padding: 0;
@@ -12,6 +26,8 @@ h3,
 h4,
 h5,
 h6 {
+
+
 }
 html {
   height: 100%;
@@ -27,7 +43,7 @@ body {
 }
 label {
   padding: 0;
-  margin: 0; 
+  margin: 0;
 }
 ul, li, ol {
   padding: 0;
@@ -65,6 +81,7 @@ a {
   -o-transition: 0.5s;
   transition: 0.5s; }
 
+
 p {
   margin-bottom: 1.5em; }
 
@@ -99,6 +116,9 @@ i.material-icons {
   background-color: #777;
 }
 
+/*===========================================
+Text Styles CSS
+============================================*/
 .t-title-size{
   font-size: 18px;
 }
@@ -117,7 +137,9 @@ i.material-icons {
 
 
 
-
+/*===========================================
+Padding & Margins CSS
+============================================*/
 .p-5{
   padding: 5px;
 }
@@ -218,6 +240,9 @@ i.material-icons {
   margin: 50px;
 }
 
+/*===========================================
+Display Styles
+============================================*/
 .d-flex{
   display: flex;
 }
@@ -240,7 +265,9 @@ i.material-icons {
 
 
 
-
+/*===========================================
+Page Styles
+============================================*/
 
 .wraper {
     width: 100%;
@@ -288,10 +315,11 @@ i.material-icons {
     letter-spacing: 5px;
     line-height: 30px;
     font-weight: 500;
-} 
+}
 
 .nav {
     flex: 1;
+    /* display: flex; */
     justify-content: flex-end;
     margin: 50px 0px;
 }
@@ -409,6 +437,7 @@ i.material-icons {
     font-family: "Roboto", sans-serif;
     font-weight: 600;
 }
+
 .role {
     font-size: 18px;
     font-weight: 500;
@@ -485,27 +514,3 @@ blink {
     bezierr(1.0,0,0,1.0);
     -webkit-animation-duration: 1s;
   }
-
-# Add a CSS class to the line that should blink
-update_line = soup.find(string="Update : Won CAPS Fellowship, UIUC, USA")
-update_line.parent['class'] = 'blink'
-
-# Add a style tag with a CSS rule for blinking text
-style_tag = soup.new_tag("style")
-style_tag.string = """
-@keyframes blink {
-    0% {opacity: 1;}
-    50% {opacity: 0;}
-    100% {opacity: 1;}
-}
-.blink {
-    animation: blink 1s linear infinite;
-}
-"""
-soup.head.append(style_tag)
-
-# Convert the modified soup object back to a string
-corrected_html_blink = str(soup)
-
-corrected_html_blink 
-
