@@ -274,12 +274,12 @@ Page Styles
     height: 100%;
 }
 
-
+/*
 .container {
     height: 100%;
     display: flex;
     flex-direction: row;
-}
+}*/
 
 .left-content {
     width: 300px;
