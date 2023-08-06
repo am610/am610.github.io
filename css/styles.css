@@ -134,7 +134,6 @@ i.material-icons {
 .p-20{
   padding: 20px;
 }
-*/
 .p-25{
   padding: 25px;
 }
@@ -514,5 +513,5 @@ soup.head.append(style_tag)
 # Convert the modified soup object back to a string
 corrected_html_blink = str(soup)
 
-corrected_html_blink 
+corrected_html_blink */
 
