@@ -140,7 +140,7 @@ Text Styles CSS
 /*===========================================
 Padding & Margins CSS
 ============================================*/
-/*.p-5{
+.p-5{
   padding: 5px;
 }
 .p-10{
@@ -238,12 +238,12 @@ Padding & Margins CSS
 }
 .m-50{
   margin: 50px;
-}*/
+}
 
 /*===========================================
 Display Styles
 ============================================*/
-.d-flex{
+/*.d-flex{
   display: flex;
 }
 .d-flex-align-center{
@@ -261,7 +261,7 @@ Display Styles
 }
 .flex-2{
   flex: 2;
-}
+}*/
 
 
 
