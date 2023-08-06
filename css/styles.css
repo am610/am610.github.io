@@ -1,7 +1,7 @@
 @charset "utf-8";
 @import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700');
 @import url('https://fonts.googleapis.com/css?family=Roboto');
-
+/*
 *{
   margin: 0;
   padding: 0;
@@ -135,7 +135,7 @@ i.material-icons {
 .p-20{
   padding: 20px;
 }
-/*
+*/
 .p-25{
   padding: 25px;
 }
@@ -515,5 +515,5 @@ soup.head.append(style_tag)
 # Convert the modified soup object back to a string
 corrected_html_blink = str(soup)
 
-corrected_html_blink */
+corrected_html_blink 
 
