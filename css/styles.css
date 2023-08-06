@@ -268,18 +268,18 @@ Display Styles
 /*===========================================
 Page Styles
 ============================================*/
-
+/*
 .wraper {
     width: 100%;
     height: 100%;
 }
 
-/*
+
 .container {
     height: 100%;
     display: flex;
     flex-direction: row;
-}*/
+}
 
 .left-content {
     width: 300px;
@@ -291,7 +291,7 @@ Page Styles
     flex-direction: column;
 }
 
-/*.main-content {
+.main-content {
     flex: 1;
     overflow-y: auto;
     margin-left: 10px;
@@ -301,7 +301,7 @@ Page Styles
 .logo {
     display: flex;
     justify-content: flex-end;
-}*/
+}
 
 .logo a {
     color: #fff;
@@ -319,7 +319,7 @@ Page Styles
 
 .nav {
     flex: 1;
-    /* display: flex; */
+     display: flex; 
     justify-content: flex-end;
     margin: 50px 0px;
 }
@@ -506,7 +506,7 @@ Page Styles
     color: #999999;
     font-weight: 500;
     letter-spacing: 5px;
-}
+} */
 blink {
    -webkit-animation-name: blink; 
    -webkit-animation-iteration-count: infinite; 
