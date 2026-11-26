@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Impossible Dance — Solving a 56-Year-Old Gravity Conjecture with AI</title>
+<meta name="description" content="An editorial walkthrough, history, interactive proof dependency graph, and reproducible verification of an AI-assisted proof draft of the planar four-body Saari conjecture." />
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-soft: #f7f7f5;
+    --bg-tint: #f3f0f8;
+    --border: #e5e5e2;
+    --border-strong: #d1cedb;
+    --ink: #18181b;
+    --ink-body: #2c2c32;
+    --muted: #5c5c68;
+    --dim: #7c7c8a;
+    --accent: #7c2ae8;
+    --accent-dark: #5818b3;
+    --accent-pink: #c0269c;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink-body);
+    font-family: Charter, "Iowan Old Style", Georgia, "Times New Roman", serif;
+    font-size: 18px;
+    line-height: 1.72;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--accent-dark); text-decoration: none; border-bottom: 1px solid rgba(124, 42, 232, 0.25); }
+  a:hover { color: var(--accent-pink); border-bottom-color: var(--accent-pink); }
+
+  /* Navigation */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+  }
+  .nav-inner {
+    max-width: 1080px; margin: 0 auto; padding: 13px 24px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .brand {
+    font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+    font-weight: 700; color: var(--ink);
+  }
+  .brand span { color: var(--accent); }
+  .nav-links { display: flex; gap: 20px; flex-wrap: wrap; font-size: 13px; font-weight: 500; }
+  .nav-links a { color: var(--muted); border: 0; }
+  .nav-links a:hover { color: var(--ink); }
+
+  /* Containers */
+  .article-col { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+  .wide-col { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
+
+  /* Blog Header / Masthead */
+  header.masthead {
+    padding: 64px 0 36px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, #faf9fc 0%, #ffffff 100%);
+  }
+  .kicker {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 14px;
+  }
+  header.masthead h1 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+    font-size: clamp(34px, 5vw, 54px);
+    font-weight: 800; letter-spacing: -0.03em; line-height: 1.08;
+    color: var(--ink); margin-bottom: 18px;
+  }
+  .dek {
+    font-size: clamp(19px, 2.2vw, 22px);
+    line-height: 1.5; color: var(--muted);
+    margin-bottom: 24px; max-width: 720px;
+  }
+  .byline {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+    font-size: 13.5px; color: var(--dim);
+    display: flex; flex-wrap: wrap; gap: 10px 20px; align-items: center;
+    margin-bottom: 26px;
+  }
+  .byline strong { color: var(--ink); font-weight: 600; }
+  .cta-row {
+    display: flex; gap: 10px; flex-wrap: wrap;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 10px 18px; border-radius: 7px; font-size: 13.5px; font-weight: 600;
+    border: 1px solid var(--border-strong); color: var(--ink); background: #fff;
+    transition: all 0.15s ease;
+  }
+  .btn:hover { background: var(--bg-soft); border-color: var(--ink); text-decoration: none; }
+  .btn-primary {
+    background: var(--ink); color: #fff; border-color: var(--ink);
+  }
+  .btn-primary:hover { background: var(--accent-dark); border-color: var(--accent-dark); color: #fff; }
+
+  /* Main Article Typography */
+  main { padding: 48px 0 72px; }
+  section.blog-sec { margin-bottom: 58px; }
+  h2 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+    font-size: clamp(24px, 3vw, 31px); font-weight: 750;
+    letter-spacing: -0.02em; color: var(--ink);
+    margin-bottom: 16px; line-height: 1.22;
+  }
+  h3 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+    font-size: 18px; font-weight: 700; color: var(--ink);
+    margin: 26px 0 10px;
+  }
+  p { margin-bottom: 18px; }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.86em; background: var(--bg-soft);
+    border: 1px solid var(--border); border-radius: 4px; padding: 1px 5px;
+    color: var(--ink);
+  }
+
+  /* Lead Media Showcase */
+  .media-plate {
+    background: #090910;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 14px 40px rgba(15, 15, 25, 0.08);
+    margin: 12px 0 36px;
+  }
+  .media-plate video { display: block; width: 100%; height: auto; background: #000; }
+  .plate-caption {
+    background: var(--bg-soft);
+    border-top: 1px solid var(--border);
+    padding: 14px 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+    font-size: 13.5px; line-height: 1.55; color: var(--muted);
+    display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;
+  }
+  .plate-caption strong { color: var(--ink); }
+
+  /* Stats Strip */
+  .stats-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px; margin: 28px 0 42px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+  }
+  .stat-card {
+    background: var(--bg-soft); border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px 18px;
+  }
+  .stat-val { font-size: 22px; font-weight: 750; color: var(--ink); margin-bottom: 3px; }
+  .stat-val span { color: var(--accent); }
+  .stat-lbl { font-size: 12.5px; color: var(--muted); line-height: 1.4; }
+
+  /* Saari Portrait + 1970 Archival Card */
+  .saari-feature {
+    display: grid; grid-template-columns: 220px 1fr; gap: 24px;
+    background: var(--bg-soft); border: 1px solid var(--border);
+    border-radius: 14px; padding: 22px; margin: 28px 0 32px;
+    align-items: start;
+  }
+  .portrait-wrap { text-align: center; }
+  .portrait-wrap img {
+    width: 100%; max-width: 220px; height: 240px; object-fit: cover; object-position: top;
+    border-radius: 10px; border: 1px solid var(--border-strong); background: #ececef;
+    display: block;
+  }
+  .portrait-cap {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+    font-size: 11.5px; color: var(--dim); margin-top: 8px; line-height: 1.4;
+  }
+  .archival-card {
+    background: #fffdf9;
+    border: 1px solid #dfd8c8;
+    border-left: 4px solid #8b6f47;
+    border-radius: 8px;
+    padding: 18px 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+  }
+  .archival-kicker {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: #7c5e34; margin-bottom: 6px; font-weight: 600;
+  }
+  .archival-title {
+    font-size: 19px; font-weight: 700; color: var(--ink); margin-bottom: 6px; line-height: 1.3;
+  }
+  .archival-meta {
+    font-size: 14px; color: var(--muted); margin-bottom: 12px;
+  }
+  .archival-quote {
+    font-style: italic; font-size: 16px; color: var(--ink-body);
+    padding-left: 14px; border-left: 2px solid #d7cbb8; margin-bottom: 10px;
+  }
+
+  /* Theorem Box */
+  .theorem-box {
+    background: var(--bg-tint);
+    border: 1px solid var(--border-strong);
+    border-left: 4px solid var(--accent);
+    border-radius: 10px;
+    padding: 22px 26px;
+    margin: 26px 0;
+  }
+  .th-label {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+    font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent-dark); margin-bottom: 8px;
+  }
+  .theorem-box p { margin-bottom: 0; font-size: 18.5px; color: var(--ink); }
+
+  /* 56-Year Historical Timeline */
+  .timeline {
+    position: relative; margin: 28px 0 32px; padding-left: 26px;
+    border-left: 2px solid var(--border-strong);
+  }
+  .tl-item { position: relative; margin-bottom: 22px; }
+  .tl-item:last-child { margin-bottom: 0; }
+  .tl-item::before {
+    content: ""; position: absolute; left: -33px; top: 7px;
+    width: 12px; height: 12px; border-radius: 50%;
+    background: #fff; border: 3px solid var(--accent);
+  }
+  .tl-year {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--accent-dark); margin-bottom: 2px;
+  }
+  .tl-title {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+    font-size: 15.5px; font-weight: 700; color: var(--ink); margin-bottom: 4px;
+  }
+  .tl-desc { font-size: 15.5px; color: var(--muted); line-height: 1.6; }
+
+  /* Dimension Cards */
+  .dim-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+    gap: 14px; margin: 24px 0 12px;
+  }
+  .card {
+    background: #fff; border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.025);
+  }
+  .card-tag {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 6px;
+  }
+  .card h4 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+    font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 8px;
+  }
+  .card p { font-size: 14.5px; color: var(--muted); line-height: 1.55; margin-bottom: 0; }
+
+  /* Dark Bioluminescent Graph Frame (high-contrast centerpiece on white page) */
+  .graph-shell {
+    background: #06060b;
+    border: 1px solid #262236;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 18px 50px rgba(15, 10, 30, 0.14);
+    margin: 22px 0 14px;
+  }
+  .graph-shell iframe { width: 100%; height: 740px; border: 0; display: block; }
+  .graph-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    gap: 16px; flex-wrap: wrap; margin-bottom: 12px;
+  }
+
+  /* Figures Gallery */
+  .fig-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px; margin-top: 22px;
+  }
+  .fig-card {
+    background: #fff; border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  .fig-card img {
+    width: 100%; height: 210px; object-fit: contain;
+    background: #fcfcfb; padding: 12px; border-bottom: 1px solid var(--border);
+  }
+  .fig-body { padding: 14px 16px; }
+  .fig-body h4 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+    font-size: 14.5px; font-weight: 700; color: var(--ink); margin-bottom: 5px;
+  }
+  .fig-body p { font-size: 13.5px; color: var(--muted); line-height: 1.5; margin: 0; }
+
+  /* Astronomy / Future Consequences Callout Grid */
+  .impact-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px; margin: 22px 0;
+  }
+  .impact-card {
+    background: var(--bg-soft); border: 1px solid var(--border);
+    border-radius: 12px; padding: 22px;
+  }
+  .impact-card h4 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+    font-size: 16px; font-weight: 700; color: var(--ink); margin-bottom: 8px;
+  }
+  .impact-card p { font-size: 15px; color: var(--muted); margin-bottom: 0; line-height: 1.6; }
+
+  /* Code / Replay */
+  pre {
+    background: #14131a; color: #ece7f8;
+    border-radius: 10px; padding: 18px 20px; overflow-x: auto;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 13px; line-height: 1.65; margin: 18px 0;
+  }
+
+  /* References */
+  .ref-list { list-style: none; display: grid; gap: 10px; margin-top: 16px; }
+  .ref-list li {
+    background: var(--bg-soft); border: 1px solid var(--border);
+    border-radius: 8px; padding: 13px 16px;
+    font-size: 14.5px; line-height: 1.55; color: var(--muted);
+  }
+  .ref-list strong { color: var(--ink); }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--border);
+    background: var(--bg-soft);
+    padding: 32px 0 48px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+    font-size: 13px; color: var(--dim);
+  }
+  .footer-inner {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 16px; flex-wrap: wrap;
+  }
+  .footer-inner a { color: var(--muted); border: 0; }
+  .footer-inner a:hover { color: var(--ink); }
+
+  @media (max-width: 720px) {
+    .saari-feature { grid-template-columns: 1fr; }
+    .portrait-wrap img { margin: 0 auto; }
+    .graph-shell iframe { height: 540px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="brand">The Impossible Dance · <span>Saari N=4</span></div>
+    <div class="nav-links">
+      <a href="#history">56-Year History</a>
+      <a href="#proof">The Proof</a>
+      <a href="#graph">Proof Graph</a>
+      <a href="#astronomy">Astronomy &amp; Spaceflight</a>
+      <a href="#verify">Verify</a>
+      <a href="#references">References</a>
+    </div>
+  </div>
+</nav>
+
+<header class="masthead">
+  <div class="article-col">
+    <div class="kicker">Celestial Mechanics · AI-Assisted Mathematics · Open Verification</div>
+    <h1>The Impossible Dance</h1>
+    <p class="dek">
+      For 56 years, mathematicians asked whether four gravitating bodies could weave through changing
+      shapes while keeping their overall moment of inertia fixed. Here is the story, the interactive
+      proof map, and an unrefereed proof draft for the planar four-body case.
+    </p>
+    <div class="byline">
+      <span><strong>Ayan Mitra</strong> · University of Illinois Urbana-Champaign, IL, USA</span>
+      <span>November 2026</span>
+      <span>8 min read · Interactive</span>
+    </div>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="animations/saari_equal_mass.html">Watch the Animation</a>
+      <a class="btn" href="#graph">Explore Proof Graph</a>
+      <a class="btn" href="#verify">Proof Status and Verification</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- Lead Animation Plate -->
+  <div class="wide-col">
+    <div class="media-plate">
+      <video controls playsinline preload="metadata" poster="animations/media/saari_equal_mass_poster.png">
+        <source src="animations/media/saari_equal_mass.mp4" type="video/mp4" />
+        <source src="animations/media/saari_equal_mass.webm" type="video/webm" />
+      </video>
+      <div class="plate-caption">
+        <span>
+          <strong>Rigid rotation vs. a 7th-order "false lead":</strong>
+          Both trajectories launch from the same centered equilateral triangle of four equal masses.
+          The deforming orbit cancels the first <em>seven</em> derivatives of the moment of inertia
+          before its certified positive eighth derivative pulls the system off the constant-inertia surface.
+        </span>
+        <a href="animations/saari_equal_mass.html">Open interactive player →</a>
+      </div>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-val">56 <span>yrs</span></div>
+        <div class="stat-lbl">Open since Donald Saari's 1969/1970 formulation</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">31,371</div>
+        <div class="stat-lbl">Lines of LaTeX across <code>manuscript/main.tex</code></div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">113</div>
+        <div class="stat-lbl">Python files for verification and reproducibility</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">52 <span>/ 724</span></div>
+        <div class="stat-lbl">Core spine sections vs. total discovery nodes</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 1: Saari & The Original 1970 Question -->
+  <section class="blog-sec" id="history">
+    <div class="article-col">
+      <h2>A deceptively simple question from 1970</h2>
+      <p>
+        Imagine four stars or planets drifting in a flat plane under Newton's inverse-square law of gravity.
+        You can measure their overall spatial spread by a single number—the polar moment of inertia about
+        their center of mass:
+        <code>I(t) = &Sigma; m<sub>i</sub> |q<sub>i</sub>(t)|<sup>2</sup></code>.
+        If the bodies lock into a rigid shape and spin uniformly like a pinwheel (a <em>relative equilibrium</em>),
+        every pairwise distance stays constant, so of course <em>I(t)</em> stays constant too.
+      </p>
+      <p>
+        In 1969—and in print in 1970—mathematician <strong>Donald G. Saari</strong> asked the converse:
+        what if only the single aggregate number <em>I(t)</em> is held constant, while individual pairs are
+        free to move closer and farther apart to compensate? Could four bodies perform a shape-shifting
+        ballet that never changes its overall size?
+      </p>
+
+      <div class="saari-feature">
+        <div class="portrait-wrap">
+          <img
+            src="https://ocw.uci.edu/upload/images/saari.png.PNG"
+            alt="Portrait of mathematician Donald G. Saari lecturing at UC Irvine"
+            onerror="this.style.display='none'"
+          />
+          <div class="portrait-cap">
+            <strong>Donald G. Saari</strong><br />
+            Distinguished Research Professor, UC Irvine<br />
+            <a href="https://ocw.uci.edu/courses/math_176_math_of_finance.html" target="_blank" rel="noopener">UCI OpenCourseWare</a>
+          </div>
+        </div>
+        <div class="archival-card">
+          <div class="archival-kicker">Original 1970 Publication</div>
+          <div class="archival-title">On bounded solutions of the n-body problem</div>
+          <div class="archival-meta">
+            <strong>Donald G. Saari</strong> · In G. E. O. Giacaglia (ed.),
+            <em>Periodic Orbits, Stability and Resonances</em>, D. Reidel, Dordrecht (1970), pp. 76–81.
+          </div>
+          <div class="archival-quote">
+            “In the Newtonian n-body problem, if the moment of inertia is constant, then the
+            corresponding solution is a relative equilibrium.”
+          </div>
+          <div style="font-size: 13.5px; color: var(--muted);">
+            Saari later traced the geometric origins of the conjecture in his 2008 retrospective,
+            <a href="https://doi.org/10.3934/dcdss.2008.1.653" target="_blank" rel="noopener">
+              <em>Reflections on the “Saari conjecture” and several new ones</em> (DCDS-S, 2008)
+            </a>.
+          </div>
+        </div>
+      </div>
+
+      <h3>56 years of attempts, breakthroughs, and near-misses</h3>
+      <p>
+        At first glance the conjecture looks like an exercise in classical mechanics. In practice, it became
+        one of celestial mechanics' most stubborn traps—defeating multiple proof attempts over five decades:
+      </p>
+
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-year">1969 – 1970</div>
+          <div class="tl-title">Donald Saari formulates the conjecture</div>
+          <div class="tl-desc">
+            First posed at the 1969 S&atilde;o Paulo symposium and published in the 1970 Giacaglia volume.
+            Early variational attempts in the following decades ran into subtle flaws and remained incomplete.
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2000</div>
+          <div class="tl-title">The figure-eight orbit reignites the chase</div>
+          <div class="tl-desc">
+            Alain Chenciner and Richard Montgomery discover the astonishing figure-eight three-body choreography.
+            Numerical checks reveal its moment of inertia is <em>almost</em> constant—varying by only a tiny
+            fraction—reviving urgent interest in whether an exact non-rigid constant-inertia orbit could exist.
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2002 – 2005</div>
+          <div class="tl-title">Equal-mass three-body &amp; collinear n-body settled</div>
+          <div class="tl-desc">
+            Christopher McCord (and independently Jaume Llibre &amp; Eduardo Pi&ntilde;a) prove the equal-mass
+            planar three-body case. Florin Diacu, Ernesto P&eacute;rez-Chavela, and Manuele Santoprete prove
+            the persistently collinear case for arbitrary <em>n</em> in <em>Trans. AMS</em> (2005).
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2005 – 2008</div>
+          <div class="tl-title">Richard Moeckel settles all three-body masses in &#x211d;<sup>d</sup></div>
+          <div class="tl-desc">
+            Using algebraic geometry and computer-assisted elimination, Moeckel proves Saari's conjecture for
+            three bodies of arbitrary positive masses in any Euclidean dimension (<em>DCDS-S</em>, 2008).
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2007 – 2013</div>
+          <div class="tl-title">Generic truth &amp; sharp counterexamples to generalizations</div>
+          <div class="tl-desc">
+            Tanya Schmah &amp; Cristina Stoica prove the conjecture holds for <em>generic</em> vector fields (2007),
+            while Gareth Roberts and Manuele Santoprete construct counterexamples when negative masses or
+            non-Newtonian potentials are allowed—showing how razor-sharp the Newtonian hypothesis is.
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2022 – 2023</div>
+          <div class="tl-title">The n &ge; 4 barrier holds</div>
+          <div class="tl-desc">
+            A general-<em>n</em> proof posted on arXiv (<code>2212.09718</code>) is later withdrawn as incomplete.
+            Moving from three bodies to four doubles the number of mutual distances from three to six, turning
+            elimination into a vastly harder algebraic-geometry problem.
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2026</div>
+          <div class="tl-title">Mitra + AI-assisted proof draft for the planar four-body problem</div>
+          <div class="tl-desc">
+            Led by Ayan Mitra with AI-assisted algebraic geometry, SymPy, Singular, and Arb
+            ball arithmetic, the working manuscript resolves planar four-body Saari for every positive mass
+            vector and proves a uniform finite derivative cutoff at a single instant.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: The Main Theorem & Proof Architecture -->
+  <section class="blog-sec" id="proof">
+    <div class="article-col">
+      <h2>How the proof collapses dimension from 3 to 0</h2>
+
+      <div class="theorem-box">
+        <div class="th-label">Main Theorem (Working Draft, Open for Verification)</div>
+        <p>
+          For every choice of four positive masses, every collision-free planar Newtonian solution with
+          constant moment of inertia about its center of mass is a relative equilibrium. Moreover, there
+          exists a uniform finite derivative order <em>N<sub>*</sub></em>
+          (14 &le; <em>N<sub>*</sub></em> &le; 2<sup>18</sup>81<sup>17</sup>) such that vanishing of the
+          first <em>N<sub>*</sub></em> inertia derivatives at a single collision-free instant forces
+          rigid rotation.
+        </p>
+      </div>
+
+      <p>
+        If a nonrigid constant-inertia orbit existed, the Lagrange–Jacobi identity would lock both its
+        kinetic energy <em>T</em> and Newtonian potential <em>U</em> to constants. Together with the planar
+        Gram determinant and a homogenized order-59 velocity-fiber theorem, this traps the complex Zariski
+        closure of the six squared mutual distances into an irreducible algebraic variety of dimension
+        <em>d &isin; {0, 1, 2, 3}</em>. The proof eliminates each positive dimension by following the orbit
+        to its complex boundary:
+      </p>
+    </div>
+
+    <div class="wide-col">
+      <div class="dim-grid">
+        <div class="card">
+          <div class="card-tag">Dimension d = 3</div>
+          <h4>Forced Adjacent Collision</h4>
+          <p>
+            Every 3D component of a fixed signed-potential level connects via explicit smooth collar charts
+            to a generic adjacent complex collision boundary, where rescaled Newton equations force an
+            incompatible acceleration balance for every positive mass vector.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-tag">Dimension d = 2</div>
+          <h4>Hodge Index Forces Equal Masses</h4>
+          <p>
+            A closed canonical momentum form and connectedness of the ample (1,1) pairing divisor on
+            &#x2119;<sup>2</sup> &times; &#x2119;<sup>2</sup> force all three double-pair mass equalities
+            (<em>m</em><sub>1</sub> = <em>m</em><sub>2</sub> = <em>m</em><sub>3</sub> = <em>m</em><sub>4</sub>).
+            Equal-mass binary equations then eliminate the remaining boundary profiles.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-tag">Dimension d = 1</div>
+          <h4>All-Degree Poles &amp; Mass Ties</h4>
+          <p>
+            At every point at infinity, two complementary distances stay finite. Equal-mass curves fail by
+            a fourth-order sign contradiction at a coincident-center cycle; equal-frequency poles fail globally;
+            and exact SymPy/Singular/Arb certificates close every remaining 2:1 mass-tie stratum.
+          </p>
+        </div>
+        <div class="card">
+          <div class="card-tag">Dimension d = 0</div>
+          <h4>Rigid Relative Equilibrium</h4>
+          <p>
+            With <em>d = 3, 2, 1</em> ruled out, all six pairwise distances remain constant in time.
+            Conservation of angular momentum then locks the four bodies into uniform rigid rotation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Interactive Bioluminescent Proof Dependency Graph -->
+  <section class="blog-sec" id="graph">
+    <div class="wide-col">
+      <div class="graph-header">
+        <div style="max-width: 740px;">
+          <h2>Inside the proof: 52 core sections, 302 nodes of exploratory "dust"</h2>
+          <p style="margin-bottom: 0; color: var(--muted); font-size: 16px;">
+            Like many deep mathematical searches—human or AI-assisted—getting to the final theorem required
+            exploring a far larger forest than what survives in the clean proof spine. The interactive graph
+            below is extracted from <code>manuscript/main.tex</code> and the verification directory:
+            the glowing white-pink trunk is the 52-section main spine; violet filaments are supporting lemmas
+            and verifiers; dim gray dust shows the ~41% of exploratory derivations (rectangles, rhombi,
+            degree-by-degree climbs) that led to the breakthrough without being needed at the end.
+          </p>
+        </div>
+        <a class="btn" href="animations/saari_dependency_graph.html" target="_blank" rel="noopener">
+          Open Fullscreen / Export 4K PNG ↗
+        </a>
+      </div>
+
+      <div class="graph-shell">
+        <iframe src="animations/saari_dependency_graph.html" title="SAARI Proof Dependency Graph" loading="lazy"></iframe>
+      </div>
+      <p style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Inter, sans-serif; font-size: 13px; color: var(--dim); text-align: center;">
+        Drag to pan · Scroll to zoom · Hover any node to inspect its line range and dependencies · Toggle Full 4-Body vs. Equal-Mass Sub-Spine.
+      </p>
+    </div>
+  </section>
+
+  <!-- Section 4: Key Verification Figures -->
+  <section class="blog-sec" id="figures">
+    <div class="wide-col">
+      <div class="article-col" style="padding: 0; margin: 0 0 18px 0;">
+        <h2>Key figures from the exact verification</h2>
+        <p style="margin-bottom: 0; color: var(--muted);">
+          Each figure below is generated directly from exact polynomial, resultant, and Arb interval
+          certificates in <code>verification/</code>.
+        </p>
+      </div>
+
+      <div class="fig-grid">
+        <div class="fig-card">
+          <img src="manuscript/figures/potential_connector.png" alt="Signed-potential connecting curve" loading="lazy" />
+          <div class="fig-body">
+            <h4>Signed-Potential Connector (d = 3)</h4>
+            <p>Real slice of the smooth conic connecting disjoint boundary branches to excluded adjacent collision boundaries.</p>
+          </div>
+        </div>
+        <div class="fig-card">
+          <img src="manuscript/figures/curve_force_signs.png" alt="Fourth-order force sign contradiction" loading="lazy" />
+          <div class="fig-body">
+            <h4>All-Degree Sign Contradiction (d = 1)</h4>
+            <p>Opposite signs of the fourth-order bounded-length correction from conservation laws versus the binary Newton force.</p>
+          </div>
+        </div>
+        <div class="fig-card">
+          <img src="manuscript/figures/invariant_ties.png" alt="Distinct-mass invariant ties" loading="lazy" />
+          <div class="fig-body">
+            <h4>Distinct-Mass Invariant Ties</h4>
+            <p>Crossings of the conserved invariant <em>J = UL<sup>2</sup></em> across competing partitions, excluded by exact arithmetic.</p>
+          </div>
+        </div>
+        <div class="fig-card">
+          <img src="manuscript/figures/single_repeated_ties.png" alt="Single-repetition mass ties" loading="lazy" />
+          <div class="fig-body">
+            <h4>Single-Repetition Mass Family</h4>
+            <p>Required adjacent mass curves for the <code>(a, a, b, c)</code> stratum across the full positive mass range.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Consequences for Future Astronomy & Spaceflight -->
+  <section class="blog-sec" id="astronomy">
+    <div class="article-col">
+      <h2>Does this matter for future astronomy and spaceflight?</h2>
+      <p>
+        Saari's conjecture began as pure celestial mechanics, yet its resolution—and especially the
+        finite-order derivative machinery developed along the way—connects directly to three concrete
+        frontiers in astronomy, orbital engineering, and mathematical physics:
+      </p>
+    </div>
+
+    <div class="wide-col">
+      <div class="impact-grid">
+        <div class="impact-card">
+          <h4>1. Formation-Flying Spacecraft &amp; Orbital Clusters</h4>
+          <p>
+            Multi-spacecraft missions like NASA's <strong>Magnetospheric Multiscale (MMS)</strong> four-satellite
+            tetrahedron—and emerging compact satellite swarms such as distributed orbital computing clusters
+            (e.g., <strong>Project Suncatcher</strong>)—must hold tight pairwise separations for science geometry
+            and optical cross-links. The theorem proves pure mutual gravity admits no "free" shape-shifting
+            constant-size dance; in Earth orbit, the manuscript's virial equation
+            <code>I'' = 4T &minus; 2U + 2&Sigma; m<sub>i</sub>&rho;<sub>i</sub>&middot;a<sub>i</sub><sup>ext</sup></code>
+            isolates the exact Earth gravity-gradient term that governs drift, and the high-order Taylor + ball-arithmetic
+            bounds can certify minimum separations over unpowered coast intervals.
+          </p>
+        </div>
+        <div class="impact-card">
+          <h4>2. Quadruple Stars &amp; Co-Orbital Moons</h4>
+          <p>
+            Compact four-body gravitational systems—from hierarchical quadruple stars to co-orbital moon
+            families (like Saturn, Tethys, Telesto, and Calypso)—cannot sustain a planar constant-inertia
+            configuration unless they are locked into a rigid central configuration. Moreover, the proved
+            <strong>open-neighborhood rigidity</strong> around all four equal-mass central configurations and
+            the <strong>uniform angular momentum gap</strong> quantify how strongly non-rigid perturbations
+            must distort the system's moment of inertia.
+          </p>
+        </div>
+        <div class="impact-card">
+          <h4>3. Short-Arc Rigidity &amp; AI-Assisted Discovery</h4>
+          <p>
+            The new <strong>uniform finite derivative cutoff</strong> (<em>14 &le; N<sub>*</sub> &le; 2<sup>18</sup>81<sup>17</sup></em>)
+            shows that rigidity isn't merely an infinite-time global property—it is already encoded in a bounded
+            jet at a single instant. Equally, the open dependency graph and the replay scripts demonstrate
+            a transparent template for human–AI mathematical research: every symbolic elimination and ball-arithmetic
+            enclosure can be audited independently rather than taken on faith.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Independent Verification & Replay -->
+  <section class="blog-sec" id="verify">
+    <div class="article-col">
+      <h2>Audit and replay the proof yourself</h2>
+      <p>
+        The short equal-mass article and its supplement received a three-pass model review and an exact
+        computational replay. Independent human mathematical review is pending. The full all-positive-mass
+        manuscript is an unrefereed working draft.
+        <a href="https://github.com/am610/SAARI/blob/main/verification/README.md#replay-the-equal-mass-proof">Equal-mass audit and replay commands (GitHub access required)</a>
+      </p>
+      <p>
+        Independent human review is the gold standard in mathematics—especially for a long, AI-assisted
+        proof. Every computational certificate in this repository uses exact rational arithmetic,
+        characteristic-zero Singular standard bases, or rigorous Arb ball arithmetic (<code>python-flint</code>).
+        You can rebuild the manuscript and replay the five final mass-stratum exclusions locally:
+      </p>
+<pre># 1. Compile the full working manuscript
+latexmk -cd -pdf manuscript/main.tex
+
+# 2. Replay the five final mass-stratum exclusion certificates (SymPy + python-flint + Singular)
+cd verification
+python3 critical_equal_index_exclusion.py --singular Singular
+python3 fifth_equal_index_exclusion.py
+python3 near_equal_unequal_index.py
+python3 balanced_tie_exclusion.py
+python3 single_repeated_tie_exclusion.py
+
+# 3. Regenerate the proof dependency graph from the live repository
+cd ..
+python3 animations/extract_proof_graph.py</pre>
+    </div>
+  </section>
+
+  <!-- Section 7: References -->
+  <section class="blog-sec" id="references">
+    <div class="article-col">
+      <h2>References</h2>
+      <ul class="ref-list">
+        <li>
+          <strong>D. G. Saari (1970).</strong>
+          <em>On bounded solutions of the n-body problem.</em>
+          In G. E. O. Giacaglia (ed.), <em>Periodic Orbits, Stability and Resonances</em>,
+          D. Reidel, Dordrecht, pp. 76–81.
+        </li>
+        <li>
+          <strong>D. G. Saari (2008).</strong>
+          <em>Reflections on the “Saari conjecture” and several new ones.</em>
+          Discrete and Continuous Dynamical Systems S, 1(4), 653–665.
+          <a href="https://doi.org/10.3934/dcdss.2008.1.653" target="_blank" rel="noopener">DOI: 10.3934/dcdss.2008.1.653</a>
+        </li>
+        <li>
+          <strong>R. Moeckel (2008).</strong>
+          <em>A proof of Saari's conjecture for the three body problem in &#x211d;<sup>d</sup>.</em>
+          Discrete and Continuous Dynamical Systems S, 1(4), 631–646.
+          <a href="https://doi.org/10.3934/dcdss.2008.1.631" target="_blank" rel="noopener">DOI: 10.3934/dcdss.2008.1.631</a>
+        </li>
+        <li>
+          <strong>F. Diacu, E. P&eacute;rez-Chavela, and M. Santoprete (2005).</strong>
+          <em>Saari's conjecture for the collinear n-body problem.</em>
+          Transactions of the American Mathematical Society, 357(10), 4215–4223.
+          <a href="https://doi.org/10.1090/S0002-9947-04-03606-2" target="_blank" rel="noopener">DOI: 10.1090/S0002-9947-04-03606-2</a>
+        </li>
+        <li>
+          <strong>T. Schmah and C. Stoica (2007).</strong>
+          <em>Saari's conjecture is true for generic vector fields.</em>
+          Transactions of the American Mathematical Society, 359, 4429–4448.
+        </li>
+        <li>
+          <strong>J. K. Lawson and C. Stoica (2007).</strong>
+          <em>Constant locked inertia tensor trajectories for simple mechanical systems with symmetry.</em>
+          Journal of Geometry and Physics, 57(4), 1247–1258.
+          <a href="https://doi.org/10.1016/j.geomphys.2006.10.003" target="_blank" rel="noopener">DOI: 10.1016/j.geomphys.2006.10.003</a>
+        </li>
+        <li>
+          <strong>G. Binyamini (2016).</strong>
+          <em>Multiplicity estimates: A Morse-theoretic approach.</em>
+          Duke Mathematical Journal, 165(1), 95–128.
+          <a href="https://doi.org/10.1215/00127094-3165220" target="_blank" rel="noopener">DOI: 10.1215/00127094-3165220</a>
+        </li>
+        <li>
+          <strong>T. Williams, E. Palmer, N. Ottenstein, and V. Santhosh.</strong>
+          <em>Magnetospheric Multiscale Mission formation flight dynamics results.</em>
+          (Cited in <code>manuscript/main.tex</code>, Section “Applications and outlook”.)
+        </li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wide-col footer-inner">
+    <div>The Impossible Dance · Ayan Mitra (University of Illinois Urbana-Champaign) · Mitra + AI-Assisted Proof Draft</div>
+    <div>
+      <a href="https://github.com/am610/SAARI/blob/main/manuscript/main.tex">Manuscript source (GitHub access required)</a> ·
+      <a href="#verify">Verification</a> ·
+      <a href="animations/saari_equal_mass.html">Animation player</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

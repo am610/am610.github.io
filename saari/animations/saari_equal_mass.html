@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Newtonian motion and the three dimension reductions in the equal-mass planar Saari proof.">
+  <title>Saari’s conjecture · Four equal masses in the plane</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f5f6f1;
+      --panel: #fdfefa;
+      --ink: #14292f;
+      --muted: #475d64;
+      --line: #ccd8d0;
+      --teal: #106d62;
+      --active: #e7f1e9;
+      font: 16px/1.55 system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); }
+    a { color: var(--teal); text-underline-offset: .19em; }
+    :focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+    .wrap { width: min(94%, 1320px); margin-inline: auto; }
+    .site-header { border-bottom: 1px solid var(--line); }
+    .masthead, .site-footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: .7rem 1.6rem;
+      padding-block: .95rem;
+    }
+    .masthead span { font-weight: 700; letter-spacing: .02em; }
+    .masthead nav, .site-footer nav { display: flex; flex-wrap: wrap; gap: 1em 1.4em; }
+    .intro { padding-block: clamp(1.65rem, 4.5vw, 3.7rem) clamp(1.3rem, 3vw, 2.4rem); }
+    h1, h2, p, figure { margin: 0; }
+    h1 {
+      max-width: 24ch;
+      font: 600 clamp(2.25rem, 5vw, 4.65rem)/1.01 Georgia, serif;
+      letter-spacing: -.044em;
+      text-wrap: balance;
+    }
+    .intro p { margin-top: 1rem; max-width: 62ch; color: var(--muted); font-size: 1.1rem; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(230px, 280px); gap: 1.35rem; }
+    video {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      background: var(--ink);
+      border: 1px solid var(--line);
+      border-radius: .6rem;
+    }
+    figcaption {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: .3rem 1rem;
+      padding-block: .65rem;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    .chapters {
+      align-self: start;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: .6rem;
+      padding: .9rem .8rem .65rem;
+    }
+    .chapters h2 { font-size: 1rem; margin: 0 .45rem .35rem; }
+    .chapters ol { list-style: none; margin: 0; padding: 0; }
+    .chapters button {
+      appearance: none;
+      display: flex;
+      align-items: baseline;
+      gap: .8rem;
+      width: 100%;
+      min-height: 2.55rem;
+      padding: .55rem .45rem;
+      border: 0;
+      border-radius: .25rem;
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+      font: inherit;
+      font-size: .91rem;
+      text-align: left;
+    }
+    .chapters button:hover, .chapters button[aria-current="true"] { background: var(--active); }
+    .chapters button[aria-current="true"] { font-weight: 650; }
+    .chapters time { color: var(--teal); font-variant-numeric: tabular-nums; }
+    .notes {
+      max-width: 78ch;
+      margin-block: 1.65rem 2.5rem;
+      padding-top: 1.35rem;
+      border-top: 1px solid var(--line);
+    }
+    .notes h2 { font-size: 1.25rem; }
+    .notes p { margin-block: .65rem; }
+    .notes dt { font-weight: 680; margin-top: .85rem; }
+    .notes dd { margin-inline-start: 0; color: var(--muted); }
+    .notes details { margin-top: 1.1rem; }
+    summary { width: fit-content; cursor: pointer; color: var(--teal); font-weight: 650; }
+    .site-footer { border-top: 1px solid var(--line); color: var(--muted); font-size: .91rem; }
+    @media (max-width: 800px) {
+      .layout { grid-template-columns: 1fr; gap: .8rem; }
+      .chapters ol { display: grid; grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 440px) {
+      .chapters ol { grid-template-columns: 1fr; }
+      .wrap { width: 92%; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap masthead">
+      <span>Saari · Equal-mass planar proof</span>
+      <nav aria-label="Research resources">
+        <a href="../">Project webpage</a>
+        <a href="saari_dependency_graph.html">Proof graph</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <section class="intro" aria-labelledby="page-title">
+      <h1 id="page-title">Saari’s conjecture for four equal masses</h1>
+      <p>In the planar Newtonian problem, constant moment of inertia about the center of mass forces a collision-free solution to rotate uniformly as a fixed shape.</p>
+    </section>
+    <div class="layout">
+      <figure>
+        <video id="movie" controls playsinline preload="metadata" width="1920" height="1080"
+               poster="media/saari_equal_mass_poster.png" aria-label="Scientific animation of the proof">
+          <source src="media/saari_equal_mass.webm" type="video/webm">
+          <source src="media/saari_equal_mass.mp4" type="video/mp4">
+          <a href="media/saari_equal_mass.mp4">Download the MP4.</a>
+        </video>
+        <figcaption>
+          <span>1 min 32 s · Silent, with on-screen captions</span>
+          <a href="media/saari_equal_mass.mp4" download>Download MP4</a>
+        </figcaption>
+      </figure>
+      <nav class="chapters" aria-labelledby="chapters-title">
+        <h2 id="chapters-title">Chapters</h2>
+        <ol id="chapter-list">
+          <li><button data-chapter="theorem" data-start="0" aria-current="true"><time datetime="PT0S">0:00</time> The theorem</button></li>
+          <li><button data-chapter="motion" data-start="6"><time datetime="PT6S">0:06</time> Two motions</button></li>
+          <li><button data-chapter="short-time" data-start="28"><time datetime="PT28S">0:28</time> The eighth-order drift</button></li>
+          <li><button data-chapter="d3" data-start="39"><time datetime="PT39S">0:39</time> A rectangle on the level</button></li>
+          <li><button data-chapter="d2" data-start="54"><time datetime="PT54S">0:54</time> The tangential divisor</button></li>
+          <li><button data-chapter="d1" data-start="70"><time datetime="PT1M10S">1:10</time> The conic obstruction</button></li>
+          <li><button data-chapter="conclusion" data-start="86"><time datetime="PT1M26S">1:26</time> Conclusion</button></li>
+        </ol>
+      </nav>
+    </div>
+    <section class="notes" aria-labelledby="notes-title">
+      <h2 id="notes-title">What the animation shows</h2>
+      <p>The two motions start from the same equilateral triangle with a fourth mass at its center. The left trajectory is an exact relative equilibrium. The right is a numerical integration from certified initial data with seven zero inertia derivatives and a positive eighth derivative.</p>
+      <details id="transcript">
+        <summary>Proof chapters in text</summary>
+        <dl>
+          <dt>Dimension three · A rectangle on the level</dt>
+          <dd>The parallelogram sweep traces a family of shapes at fixed potential. The proof places a nonsquare rectangle in the required component of the full potential level, then excludes every complex velocity direction there.</dd>
+          <dt>Dimension two · A tangential divisor</dt>
+          <dd>A complementary partial potential must have a pole on the complex phase surface. Transverse arcs are excluded. At infinity the selected divisor has a star of maximal poles or four maximal poles with adjacent zeros. At finite shape four zero graphs remain. Local equations exclude all six possibilities.</dd>
+          <dt>Dimension one · A conic obstruction</dt>
+          <dd>If every finite zero belonged to a complementary double zero, the normalized pair sums would lie on a conic. The planar Gram determinant would make a product a square, but that product has a simple zero. A finite nontrue triangle is forced, and its four profiles are excluded.</dd>
+        </dl>
+      </details>
+    </section>
+    <footer class="site-footer">
+      <span>Newtonian gravity with four unit masses</span>
+      <nav aria-label="Reproducibility">
+        <a href="media/saari_equal_mass_diagnostics.json">Numerical checks</a>
+        <a href="https://github.com/am610/SAARI/blob/main/animations/animate_saari.py">Plotting source (GitHub access required)</a>
+      </nav>
+    </footer>
+  </main>
+  <script>
+    const video = document.getElementById("movie");
+    const chapters = [...document.querySelectorAll("#chapter-list button")];
+    let nextChapter = null;
+
+    function markCurrent(active) {
+      for (const chapter of chapters) {
+        if (chapter === active) chapter.setAttribute("aria-current", "true");
+        else chapter.removeAttribute("aria-current");
+      }
+    }
+
+    function seek(chapter, play = false) {
+      markCurrent(chapter);
+      if (video.readyState >= HTMLMediaElement.HAVE_METADATA) {
+        video.currentTime = Number(chapter.dataset.start);
+      } else {
+        nextChapter = chapter;
+        video.preload = "auto";
+      }
+      if (play) video.play().catch(() => {});
+    }
+
+    function readHash() {
+      const name = location.hash.slice(1);
+      const chapter = chapters.find(button => button.dataset.chapter === name);
+      if (chapter) seek(chapter);
+    }
+
+    for (const chapter of chapters) {
+      chapter.addEventListener("click", () => {
+        seek(chapter, true);
+        history.replaceState(null, "", "#" + chapter.dataset.chapter);
+      });
+    }
+    video.addEventListener("loadedmetadata", () => {
+      if (nextChapter) {
+        const chapter = nextChapter;
+        nextChapter = null;
+        seek(chapter);
+      }
+    });
+    video.addEventListener("timeupdate", () => {
+      if (!nextChapter) {
+        const active = chapters.findLast(chapter => video.currentTime >= Number(chapter.dataset.start));
+        if (active) markCurrent(active);
+      }
+    });
+    window.addEventListener("hashchange", readHash);
+    readHash();
+  </script>
+</body>
+</html>

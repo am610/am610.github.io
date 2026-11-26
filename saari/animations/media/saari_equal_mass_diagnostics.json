@@ -1,0 +1,25 @@
+{
+  "G": 1,
+  "mass": 1,
+  "initial_inertia": 1.0,
+  "maximum_time": 0.78,
+  "minimum_sampled_pair_distance": 0.08215556268906017,
+  "maximum_absolute_energy_drift": 2.7711166694643907e-12,
+  "maximum_absolute_angular_momentum_drift": 1.1501910535116622e-13,
+  "maximum_absolute_center_of_mass": 2.3926610206402113e-16,
+  "maximum_absolute_state_difference_between_integrations": 1.0236256287043943e-12,
+  "certified_zero_inertia_derivative_orders": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "certificate_velocity_ratio": -3.5140425234534636,
+  "leading_inertia_difference_coefficient": 69.93791245249709,
+  "early_asymptotic_check_time": 0.04,
+  "integrated_to_leading_asymptotic_ratio": 0.9878258885864132,
+  "final_inertia_difference": 0.5769921950992558
+}
